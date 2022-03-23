@@ -16,7 +16,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage})
 
-router.post('/upload', upload.array('file',50), (req, res) => {
+router.post('/upload', upload.array('files',50), (req, res) => {
+    console.log(req.files)
+
     res.send({ data: 'imagen cargada'})
 })
 
