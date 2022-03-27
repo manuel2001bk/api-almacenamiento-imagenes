@@ -9,12 +9,12 @@ const signUpImage = (req, res) =>{
     }
     imagenDao.insertImagen(imagen,(data) => {
         if(data && data.affectedRows === 1){
-            res ={
+            res.message = {
                 status: true,
                 message: 'Imagen agregada correctamente'
             }
         } else {
-            res = {
+            res.messageerror = {
                 status: false,
                 message: 'Ha ocurrido un error al guardar la imagen'
             }
@@ -24,5 +24,4 @@ const signUpImage = (req, res) =>{
 
 module.exports = {
     signUpImage,
-
 }

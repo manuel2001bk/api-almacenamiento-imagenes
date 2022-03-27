@@ -1,7 +1,7 @@
-var express = require('express');
+const express = require('express');
 const multer = require("multer");
 const path = require("path");
-var router = express.Router();
+const router = express.Router();
 
 const imageServices = require('../controllers/imageService')
 
@@ -18,15 +18,15 @@ const storage = multer.diskStorage({
 const upload = multer({storage})
 
 router.post('/upload', upload.array('files',50), (req, res) => {
-    let aux
+    console.log("Entro")
+    let aux = req.files
+    console.log(aux)
     for (const x in req.files) {
         imageServices.signUpImage(req.files[x],(data)=>{
-            aux = aux +data
+            console.log(data)
         })
-            console.log("Imagen pedida",req.files[x])
     }
-
-    res.send({ data: 'imagen cargada'})
+    res.send({ data: 'Imagenes cargadas'})
 })
 
 module.exports = router;
