@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const ext = file.originalname.split('.').pop()
-        cb(null, `${Date.now()}.${ext}`)
+        cb(null, `${Date.now()}-.${ext}`)
     }
 })
 
@@ -28,5 +28,7 @@ router.post('/upload', upload.array('files',50), (req, res) => {
     }
     res.send({ data: 'Imagenes cargadas'})
 })
+
+router.get('/getImage/:name',imageServices.getImagen)
 
 module.exports = router;

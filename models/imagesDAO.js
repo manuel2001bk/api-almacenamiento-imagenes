@@ -3,7 +3,7 @@ const bd =require('../configMysql')
 module.exports = {
 
     findByOriginalName : (username, callback) => {
-        let sql = 'SELECT * FROM users WHERE userName=?'
+        let sql = 'SELECT * FROM images WHERE originalname=?'
         bd.query(sql,username, (err, data) => {
             if (err) throw err
             if (data.length>0)
